@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
-import Carousel from './Carousel'
-import ErrorBoundary from './ErrorBoundary'
-import fetchPet from '../api/fetchPet'
-import Modal from './Modal'
-import AdoptedPetContext from '../AdoptedPetContext'
+import { useContext, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { useQuery } from "@tanstack/react-query"
+import Carousel from "./Carousel"
+import ErrorBoundary from "./ErrorBoundary"
+import fetchPet from "../api/fetchPet"
+import Modal from "./Modal"
+import AdoptedPetContext from "../AdoptedPetContext"
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false)
@@ -13,12 +13,12 @@ const Details = () => {
   // eslint-disable-next-line no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContext)
   const { id } = useParams()
-  const results = useQuery(['details', id], fetchPet)
+  const results = useQuery(["details", id], fetchPet)
 
   if (results.isLoading) {
     return (
-      <div className="loading-pane">
-        <h2 className="loader">🌀</h2>
+      <div className="flex justify-center">
+        <h2 className="animate-spin text-8xl">🌀</h2>
       </div>
     )
   }
@@ -43,7 +43,7 @@ const Details = () => {
                 <button
                   onClick={() => {
                     setAdoptedPet(pet)
-                    navigate('/')
+                    navigate("/")
                   }}
                 >
                   Yes
